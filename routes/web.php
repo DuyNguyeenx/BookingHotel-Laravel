@@ -1,12 +1,14 @@
 <?php
 
 use App\Http\Controllers\Admin\BannerController;
+use App\Http\Controllers\Admin\BillController;
 use App\Http\Controllers\Admin\DiscountController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\Admin\TypeController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Client\BookingController;
 use App\Http\Controllers\Client\DetailController;
 use App\Http\Controllers\Client\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -21,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+//client
 Route::prefix('/')->group(function () {
     Route::get('/',[HomeController::class,'home',])->name('client.home');
     Route::get('/signin', function () {
@@ -36,19 +38,20 @@ Route::prefix('/')->group(function () {
     Route::get('/contact', function () {
         return view('client/contact');
     });
-    Route::get('/booking', function () {
-        return view('client/booking');
-    });
     Route::get('/rooms',[\App\Http\Controllers\Client\RoomController::class,'show'])->name('client.rooms');
-    Route::get('/blogs', function () {
-        return view('client/blogs');
-    })->name('client.blogs');
+    Route::get('/promotions', [\App\Http\Controllers\Client\DiscountController::class,'index'])->name('client.promotions');
+    Route::get('/promotion-detail/{id}',[\App\Http\Controllers\Client\DiscountController::class,'detail'])->name('client.promotion-detail');
     Route::get('/detail/{id}',[DetailController::class,'detail'])->name('client.detail');
     Route::get('/contact', function () {
         return view('client/contact');
     })->name('client.contact');
     Route::get('/type/{id}',[HomeController::class,'type'])->name('client.room_type');
+    Route::match(['GET','POST'],'/booking',[BookingController::class,'store'])->name('client.booking');
+    Route::get('/send',[BookingController::class,'testMail']);
 });
+
+
+//admin
 Route::match(['GET','POST'],'/login',[LoginController::class,'login'])->name('login');
 Route::middleware(['auth'])->group(function() {
     Route::prefix('/ad')->group(function() {
@@ -89,7 +92,10 @@ Route::middleware(['auth'])->group(function() {
             });
         });
         Route::get('/profile',[ProfileController::class,'index'])->name('profile');
-
+        Route::prefix('/bill')->group(function() {
+            Route::get('/',[BillController::class,'index'])->name('bill.index');
+            Route::match(['GET','POST'],'/detail/{id}',[BillController::class,'detail'])->name('bill.detail');
+        });
     });
 });
 

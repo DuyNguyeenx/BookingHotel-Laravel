@@ -17,11 +17,11 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->string('capacity')->nullable();
             $table->string('services')->nullable();
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
 			$table->decimal('price', 10, 0);
 			$table->unsignedBigInteger('type_id');
 			$table->foreign('type_id')->references('id')->on('types')->onDelete('cascade');
-			$table->unsignedBigInteger('discount_id')->nullable();
+			$table->unsignedBigInteger('discount_id');
 			$table->foreign('discount_id')->references('id')->on('discounts')->onDelete('cascade');
 			$table->timestamps();
             $table->softDeletes();

@@ -17,5 +17,12 @@ class Room extends Model
     {
         return $this->belongsTo(Type::class);
     }
-
+    public function discount()
+    {
+        return $this->belongsTo(Discount::class);
+    }
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class);
+    }
 }

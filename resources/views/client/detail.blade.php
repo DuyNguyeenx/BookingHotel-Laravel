@@ -17,10 +17,10 @@
                                     <i class="icon_star"></i>
                                     <i class="icon_star-half_alt"></i>
                                 </div>
-                                <a href="#">Booking Now</a>
+                                <a href="{{ route('client.booking') }}">Booking Now</a>
                             </div>
                         </div>
-                        <h2>{{ $room->price }}$<span>/Pernight</span></h2>
+                        <h2>{{ $formattedAmount }} / đêm</h2>
                         <table>
                             <tbody>
                                 <tr>

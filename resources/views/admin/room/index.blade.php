@@ -23,6 +23,7 @@
                   <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2 ">Mô tả </th>
                   <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">Giá</th>
                   <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">Loại</th>
+                  {{-- <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">Ưu đãi</th> --}}
                 </tr>
               </thead>
               <tbody>
@@ -44,6 +45,7 @@
                   <td>{{ $item->description }}</p></td>
                   <td>{{ $item->price }}</td>
                   <td>{{$item->type->name}}</td>
+                  {{-- <td>{{$item->discount->name}}</td> --}}
                 </tr>
                 @endforeach
 

@@ -29,7 +29,7 @@
                     <img src="{{ $item->image ? '' . Storage::url($item->image) : ''}}" >
                     <div class="ri-text">
                         <h4>{{ $item->name }}</h4>
-                        <h3>{{ $item->price }}$<span>/Pernight</span></h3>
+                        {{-- <h3>{{ $item->price }}$<span>/Pernight</span></h3> --}}
                         <table>
                             <tbody>
                                 <tr>

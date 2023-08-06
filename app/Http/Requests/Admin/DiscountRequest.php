@@ -32,6 +32,7 @@ class DiscountRequest extends FormRequest
                             'content' => 'required',
                             'start_date' => 'required',
                             'end_date' => 'required',
+                            'image'=>'required|image|mimes:jpeg,jpg,png,webp|max:5120',
                         ];
                         break;
                     case 'edit':
@@ -40,6 +41,7 @@ class DiscountRequest extends FormRequest
                             'content' => 'required',
                             'start_date' => 'required',
                             'end_date' => 'required',
+                            'image'=>'required|image|mimes:jpeg,jpg,png,webp|max:5120',
                         ];
                         break;
                 endswitch;
@@ -54,6 +56,8 @@ class DiscountRequest extends FormRequest
             'content.required' => 'Không được để trống!',
             'start_date.required' => 'Không được để trống!',
             'end_date.required' => 'Không được để trống!',
+            'image.required' => 'image phai upload len',
+            'image' => 'image phai la dinh dang jpeg,jpg,png,webp',
         ];
     }
 }

@@ -44,6 +44,15 @@
         @endforeach
       </select>
   </div>
+  {{-- <div class="mt-3">
+    <label class="form-label">Ưu đãi</label>
+    <select class="form-select mt-3 w-50" name="discount_id">
+        <option value="" selected></option>
+        @foreach ($discount as $item)
+        <option value="{{$item->id}}">{{$item->name}}</option>
+        @endforeach
+      </select>
+  </div> --}}
         <button class="btn btn-primary mt-3" type="submit">Submit</button>
     </form>
 @endsection

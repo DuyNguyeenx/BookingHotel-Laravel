@@ -44,17 +44,13 @@
         <div class="search-icon  search-switch">
             <i class="icon_search"></i>
         </div>
-        <div class="header-configure-area">
-
-            <a href="#" class="bk-btn">Booking Now</a>
-        </div>
         <nav class="mainmenu mobile-menu">
             <ul>
                 <li><a href="{{route('client.home')}}">Home</a></li>
                 <li><a href="{{route('client.rooms')}}">Rooms</a></li>
                 <li><a href="{{route('client.about')}}">About Us</a></li>
-                <li><a href="./blog.html">News</a></li>
-                <li><a href="./contact.html">Contact</a></li>
+                <li><a href="{{route('client.promotions')}}">Promotions</a></li>
+                <li><a href="{{route('client.contact')}}">Contact</a></li>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
@@ -110,7 +106,7 @@
                                     <li><a href="{{route('client.home')}}">Home</a></li>
                 <li><a href="{{route('client.rooms')}}">Rooms</a></li>
                 <li><a href="{{route('client.about')}}">About Us</a></li>
-                <li><a href="{{route('client.blogs')}}">Blogs</a></li>
+                <li><a href="{{route('client.promotions')}}">Promotions</a></li>
                 <li><a href="{{route('client.contact')}}">Contact</a></li>
                                 </ul>
                             </nav>
@@ -124,7 +120,7 @@
         </div>
     </header>
     <!-- Header End -->
-
+    @include('templates.error')
     @yield('content')
     <!-- Hero Section Begin -->
 
