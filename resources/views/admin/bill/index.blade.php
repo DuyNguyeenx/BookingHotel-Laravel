@@ -32,7 +32,11 @@
                     <td>{{ $item->room->name }}</td>
                     <td>{{ $item->start_date }}</p></td>
                     <td>{{ $item->end_date }}</td>
-                    <td>{{$item->total_price}} đ</td>
+                    @php
+    $amount = $item->total_price; // Số tiền cần hiển thị
+    $formattedAmount = number_format($amount, 0, ',', '.'); // Định dạng số tiền
+@endphp
+                    <td>{{$formattedAmount}} đ</td>
                     <td class="align-middle">
                         <a href="{{ route('bill.detail', $item->id) }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                             Detail

@@ -7,27 +7,25 @@
             @csrf
             <div class="container">
                 <div class="row">
-                    <div class="col-md-4">
-                      <label class="form-label">Chọn Phòng</label>
-                      <select class="form-select" name="room_id">
-                          @foreach ($room as $item)
-                          <option value="{{$item->id}}">{{$item->name}} {{ $item->price}} đ/ đêm</option>
-                          @endforeach
-                        </select>
+                    <div class="col-md-6">
+                      <h4 class="form-label mb-2">Phòng: {{$room->name}}</h4>
+                      <h5 class="mb-2">Giá tiền: {{$formattedAmount}} / đêm</h5>
+                      <h5 class="mb-2">Loại phòng: {{$room->type->name}}</h5>
+                      <img src="{{ $room->image?''.Storage::url($room->image):''}}" alt="" style="width: 600px">
+                      <input type="text" hidden name="room_id" value="{{$room->id}}">
                     </div>
-                    <div class="mb-3 col-md-4">
-                        <label class="form-label">Check-In Date (Ngày nhận phòng)</label>
-                        <input type="date" class="form-control" name="start_date" required>
-                      </div>
-                      <div class="mb-3 col-md-4">
-                        <label for="checkout" class="form-label">Check-Out Date (Ngày trả phòng)</label>
-                        <input type="date" class="form-control" name="end_date" required>
-                      </div>
+                    <div class="col-md-6">
+                        <div class="mb-3 ">
+                            <label class="form-label">Check-In Date (Ngày nhận phòng)</label>
+                            <input type="date" class="form-control" name="start_date" required>
+                          </div>
+                          <div class="mb-3 ">
+                            <label for="checkout" class="form-label">Check-Out Date (Ngày trả phòng)</label>
+                            <input type="date" class="form-control" name="end_date" required>
+                          </div>
+                    </div>
                 </div>
-                <div class="mt-3">
-                    <label class="form-label">Yêu cầu thêm</label>
-                    <textarea cols="30" rows="3" class="form-control border border-dark w-50" name="request_add"></textarea>
-                  </div>
+
             </div>
 
             <div class="container mt-5">
@@ -60,6 +58,10 @@
                       <div class="mb-3">
                         <label class="form-label">Phone (Số điện thoại)</label>
                         <input type="tel" class="form-control" name="phone" required>
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">Yêu cầu thêm</label>
+                        <textarea cols="60" rows="3" class="form-control border border-gray-800" name="request_add"></textarea>
                       </div>
                     </div>
 

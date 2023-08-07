@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Booking;
 use Illuminate\Http\Request;
+use NumberFormatter;
 
 class BillController extends Controller
 {
@@ -15,6 +16,9 @@ class BillController extends Controller
     }
     public function detail($id){
         $bill = Booking::find($id);
-        return view('admin.bill.detail',compact('bill'));
+        $price = $bill->total_price;
+        $formatter = new NumberFormatter('vi_VN', NumberFormatter::CURRENCY);
+        $formattedAmount = $formatter->formatCurrency($price, 'VND');
+        return view('admin.bill.detail',compact('bill','formattedAmount'));
     }
 }

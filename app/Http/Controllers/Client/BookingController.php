@@ -11,13 +11,19 @@ use App\Models\Room;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Mail;
+use NumberFormatter;
 
 class BookingController extends Controller
 {
     //
-
+    public function show($id){
+        $room = Room::find($id);
+        $price = $room->price;
+        $formatter = new NumberFormatter('vi_VN', NumberFormatter::CURRENCY);
+        $formattedAmount = $formatter->formatCurrency($price, 'VND');
+        return view('client.booking',compact('room','formattedAmount'));
+    }
     public function store(BookingRequest $request){
-        $room = Room::all();
         if($request->isMethod('POST')) {
             $booking = Booking::create($request->except('_token'));
             $totalPrice = $booking->calculateTotalPrice();
@@ -29,7 +35,6 @@ class BookingController extends Controller
                 return redirect()->route('client.home');
             }
           }
-          return view('client.booking',compact('room'));
     }
 
     public function testMail(){
@@ -37,9 +42,9 @@ class BookingController extends Controller
         // Mail::send('client.email',compact('name'),function($email){
         //     $email->to('duynhph24103@fpt.edu.vn','duy nguyễn');
         // });
-        $booking = Booking::find(5);
+        $booking = Booking::find(10);
         $mail = new BookingConfirmationMail($booking);
-        Mail::to('nguyenhuuduy01102003@gmail.com')->send($mail);
+        Mail::to($booking->email, 'duy nguyễn')->send($mail);
         return true;
     }
 }

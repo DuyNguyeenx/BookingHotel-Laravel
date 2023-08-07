@@ -43,7 +43,11 @@
                   <td>{{ $item->capacity }}</td>
                   <td>{{ $item->services }}</td>
                   <td>{{ $item->description }}</p></td>
-                  <td>{{ $item->price }}</td>
+                  @php
+    $amount = $item->price; // Số tiền cần hiển thị
+    $formattedAmount = number_format($amount, 0, ',', '.'); // Định dạng số tiền
+@endphp
+                  <td>{{ $formattedAmount }}đ/ đêm</td>
                   <td>{{$item->type->name}}</td>
                   {{-- <td>{{$item->discount->name}}</td> --}}
                 </tr>

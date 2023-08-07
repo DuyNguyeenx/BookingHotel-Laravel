@@ -70,7 +70,7 @@
                 </tr>
                 <tr>
                     <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">Tổng tiền</th>
-                    <td>{{$bill->total_price}} đ</td>
+                    <td>{{$formattedAmount}}</td>
                 </tr>
             </table>
             <a href="{{ route('bill.index') }}" class="btn btn-primary mt-3">Quay về</a>

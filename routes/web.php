@@ -46,6 +46,7 @@ Route::prefix('/')->group(function () {
         return view('client/contact');
     })->name('client.contact');
     Route::get('/type/{id}',[HomeController::class,'type'])->name('client.room_type');
+    Route::get('/order/{id}',[BookingController::class,'show'])->name('client.order');
     Route::match(['GET','POST'],'/booking',[BookingController::class,'store'])->name('client.booking');
     Route::get('/send',[BookingController::class,'testMail']);
 });

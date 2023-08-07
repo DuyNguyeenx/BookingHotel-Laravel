@@ -17,7 +17,7 @@
                                     <i class="icon_star"></i>
                                     <i class="icon_star-half_alt"></i>
                                 </div>
-                                <a href="{{ route('client.booking') }}">Booking Now</a>
+                                <a href="{{ route('client.order', $room->id) }}">Booking Now</a>
                             </div>
                         </div>
                         <h2>{{ $formattedAmount }} / đêm</h2>
