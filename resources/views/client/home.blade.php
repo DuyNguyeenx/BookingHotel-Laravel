@@ -13,32 +13,13 @@
             </div>
             <div class="col-xl-4 col-lg-5 offset-xl-2 offset-lg-1">
                 <div class="booking-form">
-                    <h3>Booking Your Hotel</h3>
-                    <form action="#">
+                    <h3>Search Room Hotel</h3>
+                    <form action="{{ route('client.search')}}" method="GET">
                         <div class="check-date">
-                            <label for="date-in">Check In:</label>
-                            <input type="text" class="date-input" id="date-in">
-                            <i class="icon_calendar"></i>
+                            <label for="date-in">Room Name</label>
+                            <input type="text" name="key_name">
                         </div>
-                        <div class="check-date">
-                            <label for="date-out">Check Out:</label>
-                            <input type="text" class="date-input" id="date-out">
-                            <i class="icon_calendar"></i>
-                        </div>
-                        <div class="select-option">
-                            <label for="guest">Guests:</label>
-                            <select id="guest">
-                                <option value="">2 Adults</option>
-                                <option value="">3 Adults</option>
-                            </select>
-                        </div>
-                        <div class="select-option">
-                            <label for="room">Room:</label>
-                            <select id="room">
-                                <option value="">1 Room</option>
-                                <option value="">2 Room</option>
-                            </select>
-                        </div>
+
                         <button type="submit">Check Availability</button>
                     </form>
                 </div>

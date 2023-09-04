@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('nation');
             $table->string('request_add');
 			$table->unsignedBigInteger('room_id');
-            $table->integer('cart_number');
+            $table->integer('card_number');
             $table->string('card_name');
             $table->date('card_date');
             $table->integer('card_code');

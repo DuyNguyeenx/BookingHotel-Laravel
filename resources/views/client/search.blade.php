@@ -5,10 +5,10 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="breadcrumb-text">
-                    <h2>Our Rooms</h2>
+                    <h2>Result search </h2>
                     <div class="bt-option">
                         <a href="{{route('client.home')}}">Home</a>
-                        <span>Rooms</span>
+                        <span>Search</span>
                     </div>
                 </div>
             </div>
@@ -21,7 +21,7 @@
 <section class="rooms-section spad">
     <div class="container">
         <div class="row">
-            @foreach ($rooms as $item)
+            @foreach ($room as $item)
             <div class="col-lg-4 col-md-6">
 
                 <div class="room-item">
@@ -53,9 +53,7 @@
 
 
         </div>
-        <div class="pagination justify-content-center">
-            {{ $rooms->links('pagination::bootstrap-4') }}
-        </div>
+
 
 
     </div>

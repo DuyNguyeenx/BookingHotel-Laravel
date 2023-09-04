@@ -23,4 +23,11 @@ class HomeController extends Controller
         return view('client.room_type', compact('room','type'));
     }
 
+    public function search(Request $request) {
+        $search = $request->key_name;
+
+        $room = Room::where('name','like', '%'.$search.'%')->get();
+        return view('client.search', compact('room'));
+    }
+
 }
